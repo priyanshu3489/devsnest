@@ -1,0 +1,17 @@
+def solve(M, N):
+    # CODE HERE
+    l = []
+    a = "---"
+    b = ".|."
+    num = M//2
+    for i in range(num):
+        p = (num-i)*a + ((2*i)+1)*b + (num-i)*a   
+        l.append(p)
+    num1 = (N-9)//6
+    q = (num1)*a + "DEVSNEST!" + (num1)*a
+    l.append(q)
+    for i in range(num-1,-1,-1):
+        r = (num-i)*a + ((2*i)+1)*b + (num-i)*a
+        l.append(r)
+    return l
+
