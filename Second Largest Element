@@ -1,0 +1,8 @@
+def solve(n, arr):
+    # CODE HERE
+    a = set(arr)
+    b = list(a)
+    b.sort()
+    c = len(b)
+    d = c-2
+    return b[d]
