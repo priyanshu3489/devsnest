@@ -1,0 +1,10 @@
+//Given a string s which consists of lowercase English letters. Removing duplicates means choosing two adjacent and equal letters and removing them.
+
+def solve(s):
+    st = []
+    for el in s:
+        if not st or st[-1] != el:
+            st.append(el)
+        else:
+            st.pop()
+    return "".join(st)
