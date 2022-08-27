@@ -1,0 +1,16 @@
+You are given a string s containing just the characters in an order '(' , ')' , ‘{’ , ‘}’ , '[' and ']' , determine if the input string is valid. Return 1 if valid else 0 if invalid.
+
+def solve(str):
+    st = []
+    m = {"[":"]","{":"}","(":")"}
+    for el in str:
+        if el in m:
+            st.append(el)
+        else:
+            if len(st) == 0:
+                return 0
+            elif m[st[-1]] == el:
+                st.pop()
+            else:
+                return 0
+    return 1 if len(st) == 0 else 0
