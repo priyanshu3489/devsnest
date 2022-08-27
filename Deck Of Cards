@@ -1,0 +1,17 @@
+//In a deck of cards, each card has an integer written on it.
+
+def gcd(a,b):
+    if b==0:
+        return a
+    return gcd(b,a%b) 
+def solve(n, deck):
+    m = {}
+    for x in deck:
+        if x not in m:
+            m[x] = 1
+        else:
+            m[x]+=1
+    g = m[deck[n-1]]
+    for count in m.values():
+        g = gcd(max(g,count),min(g,count))
+    return 1 if g>1 else 0
