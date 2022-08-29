@@ -1,0 +1,14 @@
+//Given an array nums. We define a running sum of an array as runningSum[i] = sum(nums[0]…nums[i]).
+
+def solve(n, nums):
+    s = deque()
+    st = []
+    ans = []
+    for i in range(0,n):
+        s.append(nums[i])
+    for i in range(0,n):
+        st.append(sum(s))
+        s.pop()
+    for i in range(n-1,-1,-1):
+        ans.append(st[i])
+    return ans
