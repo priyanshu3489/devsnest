@@ -1,0 +1,42 @@
+//For sure, the love mobiles will roll again on this summer’s street parade. Each year, the organisers decide on a fixed order for the decorated trucks.
+Experience taught them to keep free a side street to be able to bring the trucks into order.
+You are given the array order in which the love mobiles arrive. Return 1 if love mobiles can be re-arranged to sorted order, else return 0.
+
+from collections import deque
+
+
+def solve(n, order):
+    s = deque()
+    ds = deque()
+    ss = deque()
+    ls = []
+    rs = []
+    street = 2
+    
+    for i in range(n):
+        if i == n-1 :
+            s.append(order[i])
+        elif street != 0:
+            if order[i] > order[i+1]:
+                ds.append(order[i])
+                street -= 1
+            else:
+                s.append(order[i])
+        else:
+            break
+    for i in range(len(s)):
+        ls.append(s[i])
+    for i in range(len(ds)-1,-1,-1):
+        ls.append(ds[i])
+    for i in range(n-1,-1,-1):
+        rs.append(order[i])
+    if sorted(order) == rs:
+        return 1
+    elif sorted(order) == ls:
+        return 1
+    else:
+        return 0
+
+order =[5,1,2,4,3]
+l = solve(5,order)
+print(l)
