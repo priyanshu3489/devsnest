@@ -1,0 +1,47 @@
+//Given the head of a singly linked list, return 1 if it is a palindrome.
+
+def cutinhalf(head):
+    if not head or not head.next:
+        return None
+    slow = head
+    fast = head.next
+    while fast.next and fast.next.next:
+        slow = slow.next
+        fast = fast.next.next
+    if fast.next:
+        
+        slow = slow.next
+    t = slow.next
+    slow.next = None
+    return t
+
+def reverse(head):
+    if not head or not head.next:
+        return head
+    p,c,n = head,head.next,head.next.next
+    while n:
+        c.next = p
+        p = c
+        c = n
+        n = n.next
+    head.next = None
+    c.next = p
+    return c
+
+def solve(head):
+    h = cutinhalf(head)
+    h = reverse(h)
+    if h == None:
+        return 1
+    while h.next:
+        if head.data == h.data:
+            head = head.next
+            h = h.next
+        else:
+            return 0
+        return 1
+    if h.data == head.data:
+        return 1
+    else:
+        return 0
+    
