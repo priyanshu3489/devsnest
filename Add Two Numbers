@@ -1,0 +1,22 @@
+//You are given two non-empty linked lists representing two non-negative integers. The digits are stored in reverse order, and each of their nodes contains a single digit.
+Add the two numbers and return the sum as a linked list.
+
+def solve(l1, l2):
+    carry = 0
+    ans = p = Node(123)
+    while l1 and l2:
+        s = l1.data + l2.data + carry
+        carry = s//10
+        p.next = Node(s%10)
+        p,l1,l2 = p.next , l1.next , l2.next 
+    if l2:
+        l1 = l2
+    while l1:
+        s = l1.data + carry
+        carry = s//10
+        p.next = Node(s%10)
+        p,l1 = p.next,l1.next
+    if carry:
+        p.next = Node(carry)
+    return ans.next
+        
