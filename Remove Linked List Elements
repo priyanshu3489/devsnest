@@ -1,0 +1,15 @@
+//Given the head of a linked list and an integer key, remove all the nodes of the linked list that has Node.data == key, and return the new head.
+
+def solve(head, key):
+    while head and head.data == key:
+        head = head.next
+    if not head:
+        return head
+    c = head
+    while c:
+        if c.next and c.next.data == key:
+            c.next = c.next.next
+        else:
+            c = c.next
+    return head
+
