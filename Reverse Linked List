@@ -1,0 +1,14 @@
+Given the head of a singly linked list, reverse the list, and return the reversed list.
+
+def solve(head):
+    if not head or not head.next:
+        return head
+    p,c,n = head,head.next,head.next.next
+    while n:
+        c.next = p
+        p = c
+        c = n
+        n = n.next
+    head.next = None
+    c.next = p
+    return c
