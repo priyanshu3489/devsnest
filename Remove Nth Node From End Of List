@@ -1,0 +1,20 @@
+//Given the head of a linked list, remove the nth node from the end of the list and return its head.
+
+def solve(head, n):
+    k = 0
+    temp = head
+    while temp.next:
+        k+=1
+        temp = temp.next
+    x = k-n+1
+    counter = 1
+    p = head
+    if x == 0:
+        head = head.next
+        return head
+    else:
+        while counter < x:
+            p = p.next
+            counter+=1
+        p.next = p.next.next 
+        return head
