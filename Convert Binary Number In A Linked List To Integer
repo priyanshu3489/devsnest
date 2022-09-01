@@ -1,0 +1,32 @@
+//Given head which is a reference node to a singly-linked list. The value of each node in the linked list is either 0 or 1. 
+The linked list holds the binary representation of a number.
+
+def reverse(head):
+    if not head or not head.next:
+        return head
+    p,c,n = head,head.next,head.next.next
+    while n:
+        c.next = p
+        p = c
+        c = n
+        n = n.next
+    head.next = None
+    c.next = p
+    return c
+
+def solve(head):
+    head = reverse(head)
+    if not head:
+        return head
+    n = 1
+    temp = head 
+    while temp.next:
+        temp = temp.next
+        n += 1
+    s = 0
+    temp = head
+    for i in range(n): 
+        s = s + (2**i)*(temp.data)
+        temp = temp.next
+    return s
+        
