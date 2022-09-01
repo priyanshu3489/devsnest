@@ -1,0 +1,10 @@
+//Given the head of a singly linked list, return the middle node of the linked list. If there are two middle nodes, return the second middle node.
+
+def solve(head):
+    if not head or not head.next:
+        return head
+    slow , fast = head , head.next
+    while fast.next and fast.next.next:
+        slow = slow.next
+        fast = fast.next.next
+    return slow.next
