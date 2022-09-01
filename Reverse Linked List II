@@ -1,0 +1,41 @@
+Given the head of a singly linked list and two integers left and right where left <= right, reverse the nodes of the list from position left to position right, 
+and return the reversed list.
+
+def reverse(head):
+    if not head or not head.next:
+        return head
+    p,c,n = head,head.next,head.next.next
+    while n:
+        c.next = p
+        p = c
+        c = n
+        n = n.next
+    head.next = None
+    c.next = p
+    return c
+
+def solve(head, left, right):
+    f = head
+    if left-1 != 0:
+        for i in range(1,left-1):
+            f = f.next
+    l = head
+    for i in range(1,right):
+        l = l.next
+
+    if f.next == l or l.next == None:
+        return reverse(f)
+    r = l.next
+    l.next = None
+
+    if f.data == head.data:
+        temp = reverse(f)
+    else:
+        temp = reverse(f.next)
+
+    t = temp 
+    while t.next:
+        t = t.next
+    t.next = r
+    f.next = temp
+    return head
