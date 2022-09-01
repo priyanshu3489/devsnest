@@ -1,0 +1,22 @@
+//Given the head of a linked list, rotate the list to the right by k places.
+
+def solve(head, k):
+    if not head and not head.next:
+        return head
+    n = 1
+    last_el = head
+    while last_el.next:
+        last_el = last_el.next
+        n +=1
+    k = k % n
+    if k == 0:
+        return head
+    c = head
+    for i in range(n-k-1):
+        c = c.next
+    newhead = c.next
+    c.next = None
+    last_el.next = head
+    return newhead 
+    
+    
