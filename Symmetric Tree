@@ -1,0 +1,11 @@
+Given the root of a binary tree, check whether it is a mirror of itself (i.e., symmetric around its center).
+
+def symmetric(p, q):
+    if (p and not q) or (q and not p):
+        return 0
+    if not p and not q:
+        return 1
+    return 1 if p.val == q.val and symmetric(p.left,q.right) and symmetric(p.right,q.left) else 0
+
+def solve(root):
+    return symmetric(root.left,root.right)
