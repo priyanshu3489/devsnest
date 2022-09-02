@@ -1,0 +1,8 @@
+//Given the roots of two binary trees p and q, write a function to check if they are the same or not. Return 1 if they are same else 0.
+
+def solve(p, q):
+    if (p and not q) or (q and not p):
+        return 0
+    if not p and not q:
+        return 1
+    return 1 if p.val == q.val and solve(p.left,q.left) and solve(p.right,q.right) else 0
