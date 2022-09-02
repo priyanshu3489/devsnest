@@ -1,0 +1,20 @@
+//Given two integer arrays inorder and preorder where preorder is the preorder traversal of a binary tree and inorder is the inorder traversal of the same tree, 
+construct and return the binary tree.
+
+inomap = None
+pre = None
+
+def f(prestart , preend , instart , inend):
+    ino_idx = inomap[pre[prestart]]
+    l = ino_idx - instart
+    r = inend - ino_idx
+    root = TreeNode(pre[prestart])
+    root.left = f(prestart+1, prestart+l, instart, ino_idx-1) if l else None
+    root.right = f(prestart+l+1, preend, ino_idx+1, inend) if r else None
+    return root
+
+def solve(n1, n2, preorder, inorder):   
+    global inomap , pre
+    pre = preorder
+    inomap = {el:i for i, el in enumerate(inorder)}
+    return  f(0, n1-1, 0, n2-1)
