@@ -1,0 +1,8 @@
+//Given the root of a binary tree, invert the tree, and return its root.
+
+def solve(root):
+    if root:
+        solve(root.left)
+        solve(root.right)
+        root.left , root.right = root.right , root.left
+    return root
