@@ -1,0 +1,14 @@
+//Consider all the leaves of a binary tree, from left to right order, the values of those leaves form a leaf value sequen
+
+def f(root , ans):
+    if root:
+        if not root.left and not root.right:
+            ans.append(root.val)
+        f(root.left, ans)
+        f(root.right, ans)
+def solve(root1, root2):
+    ans = []
+    f(root1, ans)
+    ans2 = []
+    f(root2, ans2)
+    return 1 if ans == ans2 else 0
