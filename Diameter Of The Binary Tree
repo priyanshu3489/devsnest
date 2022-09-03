@@ -1,0 +1,11 @@
+//Given the root of a binary tree, return the length of the diameter of the tree.
+
+def f(root):
+    if root:
+        rd,rp = f(root.right)
+        ld,lp = f(root.left)
+        return 1 + max(ld,rd), max(lp, rp, 1+ld+rd)
+    return 0,0
+
+def solve(root):
+    return f(root)[1]-1
