@@ -1,2 +1,0 @@
-# devsnest
-DSA with python
