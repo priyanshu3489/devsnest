@@ -1,0 +1,12 @@
+//Given a binary tree, find the lowest common ancestor (LCA) of two given values of the nodes in the tree.
+
+def solve(root, p, q):
+    if root:
+        if root.val == p or root.val == q:
+            return root
+        l = solve(root.left, p, q)
+        r = solve(root.right, p, q)
+        if l and r:
+            return root
+        return l if l else r
+    return None
