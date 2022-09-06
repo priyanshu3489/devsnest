@@ -1,0 +1,7 @@
+
+
+def solve(root):
+    l = []
+    if not root:
+        return []
+    return solve(root.left) + [root.val] + solve(root.right)
