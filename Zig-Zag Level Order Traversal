@@ -1,0 +1,28 @@
+//Given the root of a binary tree, return the zig-zag level-order traversal of its node’s values (i.e, from left to right, then right to left for next level and alternate between).
+
+def solve(root):
+    if not root:
+        return []
+    queue = [root]
+    next_queue = []
+    level = []
+    result = []
+    i = 1
+    while queue != [] and i!=0:
+        for root in queue:
+            level.append(root.val)
+            if root.left:
+                next_queue.append(root.left)
+            if root.right:
+                next_queue.append(root.right)
+        if i%2 != 0:
+            result.append(level)
+        else:
+            result.append(reversed(level))
+        level = []
+        queue = next_queue
+        next_queue = []
+        i+=1
+    return result
+
+    
